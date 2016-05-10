@@ -12,7 +12,7 @@ LDFLAGS := -L$(LUA_LIBPATH) $(LUA_LIBS)
 TARGETS := runlua
 
 all: $(TARGETS)
-	./runlua error.lua hello.lua
+	./runlua lua/error.lua lua/hello.lua
 
 clean:
 	rm -f $(TARGETS)
