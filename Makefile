@@ -9,10 +9,10 @@ LUA_LIBS := -llua
 
 CXXFLAGS := -W -Wall -g -I$(LUA_INCLUDE)
 LDFLAGS := -L$(LUA_LIBPATH) $(LUA_LIBS)
-TARGETS := example1
+TARGETS := runlua
 
 all: $(TARGETS)
-	./example1 error.lua hello.lua
+	./runlua error.lua hello.lua
 
 clean:
 	rm -f $(TARGETS)
