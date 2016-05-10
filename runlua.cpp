@@ -1,57 +1,34 @@
 #include <iostream>
-
-// Emphasize that this program is made for Lua 5.2: The interface has not been
-// stable over the years.
-extern "C" {
-  #include <lua5.2/lua.h>
-  #include <lua5.2/lualib.h>
-  #include <lua5.2/lauxlib.h>
-}
-
-class LuaState {
-public:
-  LuaState():
-    state(luaL_newstate())
-  {
-  }
-
-  ~LuaState() {
-    lua_close(state);
-  }
-
-  operator lua_State*() {
-    return state;
-  }
-
-private:
-  lua_State *state;
-  LuaState(const LuaState&); // DENY
-  LuaState& operator=(const LuaState&); // DENY
-};
+#include <lua5.2/lua.hpp>
 
 void print_error(lua_State* state) {
-  // Fetch string on top of the return stack
-  const char* error = lua_tostring(state, -1);
-  std::cout << error << std::endl;
+  // The error message is on top of the stack; fetch it
+  const char* message = lua_tostring(state, -1);
 
-  // Remove item on top of the stack
+  // Print it
+  std::cout << message << std::endl;
+
+  // Remove the string from the stack
   lua_pop(state, 1);
 }
 
-// Load and execute Lua program
 void execute(const char* filename)
 {
-  LuaState state;
+  lua_State *state = luaL_newstate();
+
+  // Make standard libraries available in `state`
   luaL_openlibs(state);
 
   int result;
 
+  // Load Lua prorgram into `state`
   result = luaL_loadfile(state, filename);
   if ( result != LUA_OK ) {
     print_error(state);
     return;
   }
 
+  // Execute Lua program in `state`
   result = lua_pcall(state, 0, LUA_MULTRET, 0);
   if ( result != LUA_OK ) {
     print_error(state);
@@ -61,8 +38,18 @@ void execute(const char* filename)
 
 int main(int argc, char** argv)
 {
-  for ( int n=1; n<argc; ++n )
+  if ( argc <= 1 ) {
+    std::cout
+      << "Usage: runlua filename(s)"
+      << "Loads and executes Lua programs."
+      << std::endl;
+    return 1;
+  }
+
+  // Execute all programs on the command line
+  for ( int n=1; n<argc; ++n ) {
     execute(argv[n]);
+  }
 
   return 0;
 }
