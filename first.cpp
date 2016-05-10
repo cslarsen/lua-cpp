@@ -1,4 +1,10 @@
-#include <lua5.2/lua.hpp>
+#ifdef __cplusplus
+# include <lua5.2/lua.hpp>
+#else
+# include <lua5.2/lua.h>
+# include <lua5.2/lualib.h>
+# include <lua5.2/lauxlib.h>
+#endif
 
 int main()
 {
