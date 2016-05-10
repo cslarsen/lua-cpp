@@ -1,17 +1,19 @@
 #include <iostream>
+
+// Be specific about which version of Lua we compile against.
+// The Lua interface has had incompatible changes over the years.
 #include <lua5.2/lua.hpp>
 
 void print_error(lua_State* state) {
-  // The error message is on top of the stack; fetch it
+  // Fetch error message from the top of the stack
   const char* message = lua_tostring(state, -1);
-
-  // Print it
   std::cout << message << std::endl;
 
-  // Remove the string from the stack
+  // Remove the message from the stack
   lua_pop(state, 1);
 }
 
+// Loads and executes a Lua program (handles both source and byte code)
 void execute(const char* filename)
 {
   lua_State *state = luaL_newstate();
