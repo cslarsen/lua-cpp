@@ -2,7 +2,7 @@
 #
 # 		$ LUA_INCLUDE=/your/path make -e
 
-# (edit this) Points to directory containing lua.h
+# (edit this) Points to directory containing the lua5.2 directory
 LUA_INCLUDE := /usr/local/include
 LUA_LIBPATH := /usr/local/lib
 LUA_LIBS := -llua

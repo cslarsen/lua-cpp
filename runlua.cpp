@@ -1,5 +1,7 @@
 #include <iostream>
 
+// Emphasize that this program is made for Lua 5.2: The interface has not been
+// stable over the years.
 extern "C" {
   #include <lua5.2/lua.h>
   #include <lua5.2/lualib.h>
