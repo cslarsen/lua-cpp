@@ -1,4 +1,6 @@
 *.dSYM
+*.luac
 *.o
 example1
+first
 runlua
