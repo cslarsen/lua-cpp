@@ -13,7 +13,7 @@ int howdy(lua_State* state)
   // The number of function arguments will be on top of the stack.
   int args = lua_gettop(state);
 
-  printf("howdy() was alled with %d arguments:\n", args);
+  printf("howdy() was called with %d arguments:\n", args);
 
   for ( int n=1; n<=args; ++n) {
     printf("  argument %d: '%s'\n", n, lua_tostring(state, n));
