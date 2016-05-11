@@ -1,6 +1,7 @@
 *.dSYM
 *.luac
 *.o
+callback
 example1
 first
 runlua
