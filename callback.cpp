@@ -8,6 +8,9 @@
 # include <lua5.2/lauxlib.h>
 #endif
 
+#ifdef __cplusplus
+extern "C"
+#endif
 int howdy(lua_State* state)
 {
   // The number of function arguments will be on top of the stack.
