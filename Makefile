@@ -4,8 +4,9 @@
 
 # (edit this) Points to directory containing the lua5.2 directory
 LUAC := luac
-LUA_INCLUDE := /usr/local/include
-LUA_LIBPATH := /usr/local/lib
+LUA_ROOT := /usr/local
+LUA_INCLUDE := $(LUA_ROOT)/include
+LUA_LIBPATH := $(LUA_ROOT)/lib
 LUA_LIBS := -llua
 
 CXXFLAGS := -W -Wall -g -I$(LUA_INCLUDE)

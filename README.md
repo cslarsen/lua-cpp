@@ -10,7 +10,7 @@ Building the examples
 You can either edit the Makefile to adjust things like include paths, or you
 can run
 
-    $ LUA_INCLUDE=/your/path make -e
+    $ LUA_ROOT=/usr/local make -e
 
 Author and license
 ------------------

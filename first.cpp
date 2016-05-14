@@ -1,9 +1,9 @@
 #ifdef __cplusplus
-# include <lua5.2/lua.hpp>
+# include <lua.hpp>
 #else
-# include <lua5.2/lua.h>
-# include <lua5.2/lualib.h>
-# include <lua5.2/lauxlib.h>
+# include <lua.h>
+# include <lualib.h>
+# include <lauxlib.h>
 #endif
 
 int main()

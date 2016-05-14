@@ -1,6 +1,9 @@
 *.dSYM
 *.luac
 *.o
+GPATH
+GRTAGS
+GTAGS
 callback
 example1
 first
